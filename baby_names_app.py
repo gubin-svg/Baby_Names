@@ -2,10 +2,22 @@ import sqlite3
 import pandas as pd
 import streamlit as st
 import plotly.express as px
+import os
+import requests
 
 st.set_page_config(page_title="Baby Names Explorer", layout="wide")
 
 DB_PATH = "baby_names.db"
+DB_URL = "https://github.com/gubin-svg/Baby_Names/releases/download/db's/baby_names.db"
+
+def ensure_db():
+    if not os.path.exists(DB_PATH):
+        r = requests.get(DB_URL)
+        r.raise_for_status()
+        with open(DB_PATH, "wb") as f:
+            f.write(r.content)
+
+ensure_db()
 
 @st.cache_data
 def load_name_popularity(names, use_percentage=False):
