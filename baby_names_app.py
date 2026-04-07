@@ -55,6 +55,19 @@ def load_name_popularity(names, use_percentage=False):
 
 
 st.title("Baby Names Explorer")
+
+st.markdown("""
+This app allows you to explore baby name trends using a U.S. dataset.
+
+Features include:
+- Visualizing name popularity over time  
+- Switching between raw counts and relative popularity (percentage of births)  
+- Running custom SQL queries on the dataset  
+- Exploring top names by decade  
+
+Use the sidebar to configure inputs and explore different views of the data.
+""")
+
 st.subheader("Name Popularity Over Time")
 
 # Sidebar for user inputs
